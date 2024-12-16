@@ -3,20 +3,33 @@ import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
-import { Volume2 } from "lucide-react";
+import { Volume2, Star, Trophy, Brain } from "lucide-react";
 
-const words = [
-  "apple",
-  "banana",
-  "chocolate",
-  "dinosaur",
-  "elephant",
-  "flamingo",
-  "giraffe",
-  "hamburger",
-  "igloo",
-  "jellyfish",
-];
+const wordsByLevel = {
+  easy: [
+    "apple",
+    "banana",
+    "cat",
+    "dog",
+    "egg",
+  ],
+  medium: [
+    "chocolate",
+    "dinosaur",
+    "elephant",
+    "flamingo",
+    "giraffe",
+  ],
+  hard: [
+    "hamburger",
+    "igloo",
+    "jellyfish",
+    "knowledge",
+    "language",
+  ],
+};
+
+type Level = "easy" | "medium" | "hard";
 
 const SpellingGame = () => {
   const [currentWord, setCurrentWord] = useState("");
@@ -24,9 +37,12 @@ const SpellingGame = () => {
   const [score, setScore] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [level, setLevel] = useState<Level | null>(null);
   const { toast } = useToast();
 
   const getRandomWord = () => {
+    if (!level) return;
+    const words = wordsByLevel[level];
     const word = words[Math.floor(Math.random() * words.length)];
     setCurrentWord(word);
     setUserInput("");
@@ -34,8 +50,10 @@ const SpellingGame = () => {
   };
 
   useEffect(() => {
-    getRandomWord();
-  }, []);
+    if (level) {
+      getRandomWord();
+    }
+  }, [level]);
 
   const speakWord = () => {
     const utterance = new SpeechSynthesisUtterance(currentWord);
@@ -66,11 +84,76 @@ const SpellingGame = () => {
     }
   };
 
+  const handleLevelSelect = (selectedLevel: Level) => {
+    setLevel(selectedLevel);
+    setScore(0);
+    setProgress(0);
+  };
+
+  if (!level) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-primary/20 to-background p-8">
+        <div className="max-w-md mx-auto space-y-8">
+          <div className="text-center space-y-4">
+            <h1 className="text-4xl font-bold text-primary">Spelling Game</h1>
+            <p className="text-xl text-gray-600">Choose your difficulty level</p>
+          </div>
+
+          <div className="grid gap-4">
+            <Button
+              onClick={() => handleLevelSelect("easy")}
+              className="h-32 bg-green-500 hover:bg-green-600 transition-all transform hover:scale-105"
+            >
+              <div className="flex flex-col items-center gap-2">
+                <Star className="h-8 w-8" />
+                <span className="text-xl font-bold">Easy</span>
+                <span className="text-sm opacity-90">Simple, common words</span>
+              </div>
+            </Button>
+
+            <Button
+              onClick={() => handleLevelSelect("medium")}
+              className="h-32 bg-yellow-500 hover:bg-yellow-600 transition-all transform hover:scale-105"
+            >
+              <div className="flex flex-col items-center gap-2">
+                <Trophy className="h-8 w-8" />
+                <span className="text-xl font-bold">Medium</span>
+                <span className="text-sm opacity-90">More challenging words</span>
+              </div>
+            </Button>
+
+            <Button
+              onClick={() => handleLevelSelect("hard")}
+              className="h-32 bg-red-500 hover:bg-red-600 transition-all transform hover:scale-105"
+            >
+              <div className="flex flex-col items-center gap-2">
+                <Brain className="h-8 w-8" />
+                <span className="text-xl font-bold">Hard</span>
+                <span className="text-sm opacity-90">Complex vocabulary</span>
+              </div>
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary/20 to-background p-8">
       <div className="max-w-md mx-auto space-y-8">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-primary">Spelling Game</h1>
+          <div className="flex items-center justify-between">
+            <Button 
+              variant="outline" 
+              onClick={() => setLevel(null)}
+              className="text-gray-600"
+            >
+              Change Level
+            </Button>
+            <h1 className="text-4xl font-bold text-primary">
+              {level.charAt(0).toUpperCase() + level.slice(1)} Mode
+            </h1>
+          </div>
           <p className="text-xl">Score: {score}</p>
           <Progress value={progress} className="w-full" />
         </div>
