@@ -3,7 +3,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
-import { Volume2, Star, Trophy, Brain } from "lucide-react";
+import { Volume2, Star, Trophy, Brain, Keyboard } from "lucide-react";
 
 const wordsByLevel = {
   easy: [
@@ -60,6 +60,21 @@ const SpellingGame = () => {
     window.speechSynthesis.speak(utterance);
   };
 
+  // Add keyboard event listener
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === 'Enter' && level) {
+        handleSubmit(e as unknown as React.FormEvent);
+      } else if (e.key === ' ' && level) {
+        e.preventDefault(); // Prevent space from scrolling
+        speakWord();
+      }
+    };
+
+    window.addEventListener('keypress', handleKeyPress);
+    return () => window.removeEventListener('keypress', handleKeyPress);
+  }, [level, userInput]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const correct = userInput.toLowerCase() === currentWord.toLowerCase();
@@ -99,6 +114,13 @@ const SpellingGame = () => {
             <p className="text-xl text-gray-600">Choose your difficulty level</p>
           </div>
 
+          <div className="text-center text-sm text-gray-500 mb-4">
+            <p className="flex items-center justify-center gap-2">
+              <Keyboard className="h-4 w-4" />
+              Use number keys (1-3) to select level
+            </p>
+          </div>
+
           <div className="grid gap-4">
             <Button
               onClick={() => handleLevelSelect("easy")}
@@ -106,7 +128,7 @@ const SpellingGame = () => {
             >
               <div className="flex flex-col items-center gap-2">
                 <Star className="h-8 w-8" />
-                <span className="text-xl font-bold">Easy</span>
+                <span className="text-xl font-bold">Easy (1)</span>
                 <span className="text-sm opacity-90">Simple, common words</span>
               </div>
             </Button>
@@ -117,7 +139,7 @@ const SpellingGame = () => {
             >
               <div className="flex flex-col items-center gap-2">
                 <Trophy className="h-8 w-8" />
-                <span className="text-xl font-bold">Medium</span>
+                <span className="text-xl font-bold">Medium (2)</span>
                 <span className="text-sm opacity-90">More challenging words</span>
               </div>
             </Button>
@@ -128,7 +150,7 @@ const SpellingGame = () => {
             >
               <div className="flex flex-col items-center gap-2">
                 <Brain className="h-8 w-8" />
-                <span className="text-xl font-bold">Hard</span>
+                <span className="text-xl font-bold">Hard (3)</span>
                 <span className="text-sm opacity-90">Complex vocabulary</span>
               </div>
             </Button>
@@ -148,7 +170,7 @@ const SpellingGame = () => {
               onClick={() => setLevel(null)}
               className="text-gray-600"
             >
-              Change Level
+              Change Level (Esc)
             </Button>
             <h1 className="text-4xl font-bold text-primary">
               {level.charAt(0).toUpperCase() + level.slice(1)} Mode
@@ -169,7 +191,7 @@ const SpellingGame = () => {
               <Volume2 className="h-6 w-6" />
             </Button>
             <span className="text-2xl font-semibold">
-              Click to hear the word
+              Click to hear the word (Space)
             </span>
           </div>
 
@@ -178,7 +200,7 @@ const SpellingGame = () => {
               type="text"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
-              placeholder="Type the word here..."
+              placeholder="Type the word here... (Enter to submit)"
               className={`text-center text-xl ${
                 isCorrect === true
                   ? "animate-bounce border-success"
@@ -193,7 +215,7 @@ const SpellingGame = () => {
               className="w-full bg-primary hover:bg-primary/90"
               size="lg"
             >
-              Check Spelling
+              Check Spelling (Enter)
             </Button>
           </form>
         </div>

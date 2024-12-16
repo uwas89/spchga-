@@ -158,18 +158,21 @@
     <div class="container">
         <h1>Spelling Game</h1>
         <div class="level-buttons">
-            <button class="level-easy" onclick="setLevel('easy')">Easy</button>
-            <button class="level-medium" onclick="setLevel('medium')">Medium</button>
-            <button class="level-hard" onclick="setLevel('hard')">Hard</button>
+            <button class="level-easy" onclick="setLevel('easy')">Easy (1)</button>
+            <button class="level-medium" onclick="setLevel('medium')">Medium (2)</button>
+            <button class="level-hard" onclick="setLevel('hard')">Hard (3)</button>
         </div>
+        <p class="keyboard-hint">Use number keys (1-3) to select level</p>
         <div class="game-card">
             <p>Score: <span id="score">0</span></p>
             <div class="progress-bar">
                 <div class="progress-fill" id="progress"></div>
             </div>
             <button class="speak-button" onclick="speakWord()">🔊</button>
-            <input type="text" id="userInput" class="input-field" placeholder="Type the word here...">
-            <button class="submit-button" onclick="checkSpelling()">Check Spelling</button>
+            <p class="keyboard-hint">Press Space to hear the word</p>
+            <input type="text" id="userInput" class="input-field" placeholder="Type the word here and press Enter...">
+            <button class="submit-button" onclick="checkSpelling()">Check Spelling (Enter)</button>
+            <p class="keyboard-hint">Press Esc to change level</p>
         </div>
     </div>
 
@@ -238,6 +241,35 @@
                 }, 1500);
             }
         }
+
+        // Add keyboard event listeners
+        document.addEventListener('keypress', function(e) {
+            if (!currentLevel) {
+                // Level selection with number keys
+                if (e.key === '1') setLevel('easy');
+                if (e.key === '2') setLevel('medium');
+                if (e.key === '3') setLevel('hard');
+            } else {
+                // Game controls
+                if (e.key === ' ') {
+                    e.preventDefault(); // Prevent scrolling
+                    speakWord();
+                }
+                if (e.key === 'Enter') {
+                    checkSpelling();
+                }
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && currentLevel) {
+                currentLevel = null;
+                score = 0;
+                progress = 0;
+                document.getElementById('score').textContent = score;
+                document.getElementById('progress').style.width = '0%';
+            }
+        });
 
         // Initialize the game
         getNewWord();
