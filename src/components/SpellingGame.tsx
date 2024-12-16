@@ -16,6 +16,7 @@ const SpellingGame = () => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [level, setLevel] = useState<Level | null>(null);
   const [pressedKey, setPressedKey] = useState("");
+  const [usedWords, setUsedWords] = useState<Set<string>>(new Set());
   const { toast } = useToast();
 
   const correctSound = new Audio("/correct.mp3");
@@ -26,8 +27,42 @@ const SpellingGame = () => {
   const getRandomWord = () => {
     if (!level) return;
     const words = wordsByLevel[level];
-    const word = words[Math.floor(Math.random() * words.length)];
+    const availableWords = words.filter(word => !usedWords.has(word));
+    
+    if (availableWords.length === 0) {
+      // If all words are used, progress to next level or reset if at highest level
+      if (level === "easy") {
+        setLevel("medium");
+        setUsedWords(new Set());
+        toast({
+          title: "Level Up! 🎉",
+          description: "Welcome to Medium level!",
+          className: "bg-success text-white",
+        });
+      } else if (level === "medium") {
+        setLevel("hard");
+        setUsedWords(new Set());
+        toast({
+          title: "Level Up! 🎉",
+          description: "Welcome to Hard level!",
+          className: "bg-success text-white",
+        });
+      } else {
+        // Reset to easy if completed all levels
+        setLevel("easy");
+        setUsedWords(new Set());
+        toast({
+          title: "Congratulations! 🏆",
+          description: "You've completed all levels! Starting over from Easy.",
+          className: "bg-success text-white",
+        });
+      }
+      return;
+    }
+
+    const word = availableWords[Math.floor(Math.random() * availableWords.length)];
     setCurrentWord(word);
+    setUsedWords(prev => new Set([...prev, word]));
     setUserInput("");
     setIsCorrect(null);
   };
@@ -79,7 +114,23 @@ const SpellingGame = () => {
       correctSound.play();
       applauseSound.play();
       setScore(score + 1);
-      setProgress((prev) => Math.min(prev + 10, 100));
+      setProgress((prev) => {
+        const newProgress = Math.min(prev + 10, 100);
+        if (newProgress === 100) {
+          // Progress to next level when progress bar is full
+          setTimeout(() => {
+            if (level === "easy") {
+              setLevel("medium");
+            } else if (level === "medium") {
+              setLevel("hard");
+            } else {
+              setLevel("easy");
+            }
+            setProgress(0);
+          }, 1500);
+        }
+        return newProgress;
+      });
       toast({
         title: "Correct! 🎉",
         description: "Great job! Keep going!",
