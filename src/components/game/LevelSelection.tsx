@@ -19,7 +19,7 @@ const LevelSelection = ({ onLevelSelect }: LevelSelectionProps) => {
         <div className="text-center text-sm text-gray-500 mb-4">
           <p className="flex items-center justify-center gap-2">
             <Keyboard className="h-4 w-4" />
-            Use number keys (1-3) to select level
+            Select your difficulty level
           </p>
         </div>
 
@@ -30,7 +30,7 @@ const LevelSelection = ({ onLevelSelect }: LevelSelectionProps) => {
           >
             <div className="flex flex-col items-center gap-2">
               <Star className="h-8 w-8" />
-              <span className="text-xl font-bold">Easy (1)</span>
+              <span className="text-xl font-bold">Easy</span>
               <span className="text-sm opacity-90">Simple, common words</span>
             </div>
           </Button>
@@ -41,7 +41,7 @@ const LevelSelection = ({ onLevelSelect }: LevelSelectionProps) => {
           >
             <div className="flex flex-col items-center gap-2">
               <Trophy className="h-8 w-8" />
-              <span className="text-xl font-bold">Medium (2)</span>
+              <span className="text-xl font-bold">Medium</span>
               <span className="text-sm opacity-90">More challenging words</span>
             </div>
           </Button>
@@ -52,7 +52,7 @@ const LevelSelection = ({ onLevelSelect }: LevelSelectionProps) => {
           >
             <div className="flex flex-col items-center gap-2">
               <Brain className="h-8 w-8" />
-              <span className="text-xl font-bold">Hard (3)</span>
+              <span className="text-xl font-bold">Hard</span>
               <span className="text-sm opacity-90">Complex vocabulary</span>
             </div>
           </Button>
