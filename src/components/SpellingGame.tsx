@@ -20,6 +20,8 @@ const SpellingGame = () => {
 
   const correctSound = new Audio("/correct.mp3");
   const wrongSound = new Audio("/wrong.mp3");
+  const applauseSound = new Audio("/applause.mp3");
+  const buzzerSound = new Audio("/buzzer.mp3");
 
   const getRandomWord = () => {
     if (!level) return;
@@ -75,6 +77,7 @@ const SpellingGame = () => {
 
     if (correct) {
       correctSound.play();
+      applauseSound.play();
       setScore(score + 1);
       setProgress((prev) => Math.min(prev + 10, 100));
       toast({
@@ -85,6 +88,7 @@ const SpellingGame = () => {
       setTimeout(getRandomWord, 1500);
     } else {
       wrongSound.play();
+      buzzerSound.play();
       toast({
         title: "Not quite right 😅",
         description: `The correct spelling is: ${currentWord}`,
