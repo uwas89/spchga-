@@ -158,21 +158,20 @@
     <div class="container">
         <h1>Spelling Game</h1>
         <div class="level-buttons">
-            <button class="level-easy" onclick="setLevel('easy')">Easy (1)</button>
-            <button class="level-medium" onclick="setLevel('medium')">Medium (2)</button>
-            <button class="level-hard" onclick="setLevel('hard')">Hard (3)</button>
+            <button class="level-easy" onclick="setLevel('easy')">Easy</button>
+            <button class="level-medium" onclick="setLevel('medium')">Medium</button>
+            <button class="level-hard" onclick="setLevel('hard')">Hard</button>
         </div>
-        <p class="keyboard-hint">Use number keys (1-3) to select level</p>
         <div class="game-card">
             <p>Score: <span id="score">0</span></p>
             <div class="progress-bar">
                 <div class="progress-fill" id="progress"></div>
             </div>
             <button class="speak-button" onclick="speakWord()">🔊</button>
-            <p class="keyboard-hint">Press Space to hear the word</p>
+            <p>Press Space to hear the word</p>
             <input type="text" id="userInput" class="input-field" placeholder="Type the word here and press Enter...">
             <button class="submit-button" onclick="checkSpelling()">Check Spelling (Enter)</button>
-            <p class="keyboard-hint">Press Esc to change level</p>
+            <p>Press Esc to change level</p>
         </div>
     </div>
 
@@ -180,28 +179,79 @@
 
     <script>
         const words = {
-            easy: ['cat', 'dog', 'hat', 'run', 'jump', 'play', 'book', 'tree', 'fish', 'bird'],
-            medium: ['elephant', 'giraffe', 'computer', 'bicycle', 'rainbow', 'pencil', 'window', 'flower', 'rabbit', 'turtle'],
-            hard: ['encyclopedia', 'photosynthesis', 'extraordinary', 'sophisticated', 'consciousness', 'phenomenon', 'archaeological', 'pharmaceutical', 'revolutionary', 'philosophical']
+            easy: [
+                "apple", "banana", "cat", "dog", "egg", "fish", "goat", "hat", 
+                "ice", "jump", "kite", "lamp", "moon", "nest", "orange", "pen",
+                "queen", "rain", "sun", "tree", "umbrella", "van", "water", "box",
+                "yellow", "zebra"
+            ],
+            medium: [
+                "chocolate", "dinosaur", "elephant", "flamingo", "giraffe", 
+                "hospital", "internet", "kangaroo", "library", "mountain",
+                "octopus", "penguin", "question", "rainbow", "sandwich",
+                "telephone", "umbrella", "vacation", "whisper", "xylophone",
+                "yesterday", "butterfly", "crocodile", "dangerous", "exercise"
+            ],
+            hard: [
+                "absolutely", "beautiful", "celebration", "dangerous", "environment",
+                "fascinating", "government", "happiness", "important", "knowledge",
+                "laboratory", "magnificent", "necessary", "opportunity", "particular",
+                "qualification", "responsible", "spectacular", "temperature", "understand",
+                "vocabulary", "wonderful", "xylophone", "yesterday", "zoologist",
+                "achievement", "brilliant", "confidence", "determination", "extraordinary"
+            ]
         };
 
-        let currentLevel = 'easy';
+        let currentLevel = null;
         let currentWord = '';
         let score = 0;
         let progress = 0;
+        let usedWords = new Set();
+
+        const correctSound = new Audio("/correct.mp3");
+        const wrongSound = new Audio("/wrong.mp3");
+        const applauseSound = new Audio("/applause.mp3");
+        const buzzerSound = new Audio("/buzzer.mp3");
 
         function setLevel(level) {
             currentLevel = level;
             score = 0;
             progress = 0;
+            usedWords.clear();
             document.getElementById('score').textContent = score;
             document.getElementById('progress').style.width = '0%';
             getNewWord();
         }
 
         function getNewWord() {
+            if (!currentLevel) return;
             const levelWords = words[currentLevel];
-            currentWord = levelWords[Math.floor(Math.random() * levelWords.length)];
+            const availableWords = levelWords.filter(word => !usedWords.has(word));
+            
+            if (availableWords.length === 0) {
+                if (currentLevel === "easy") {
+                    currentLevel = "medium";
+                    usedWords.clear();
+                    showToast("Level Up! 🎉 Welcome to Medium level!", "success");
+                } else if (currentLevel === "medium") {
+                    currentLevel = "hard";
+                    usedWords.clear();
+                    showToast("Level Up! 🎉 Welcome to Hard level!", "success");
+                } else {
+                    currentLevel = "easy";
+                    usedWords.clear();
+                    showToast("Congratulations! 🏆 Starting over from Easy.", "success");
+                }
+                score = 0;
+                progress = 0;
+                document.getElementById('score').textContent = score;
+                document.getElementById('progress').style.width = '0%';
+                getNewWord();
+                return;
+            }
+
+            currentWord = availableWords[Math.floor(Math.random() * availableWords.length)];
+            usedWords.add(currentWord);
             document.getElementById('userInput').value = '';
             document.getElementById('userInput').className = 'input-field';
         }
@@ -225,14 +275,31 @@
             const input = document.getElementById('userInput');
 
             if (userInput === currentWord.toLowerCase()) {
+                correctSound.play();
+                applauseSound.play();
                 score++;
                 progress = Math.min(progress + 10, 100);
                 document.getElementById('score').textContent = score;
                 document.getElementById('progress').style.width = progress + '%';
                 input.className = 'input-field correct';
-                showToast('Correct! 🎉', 'success');
-                setTimeout(getNewWord, 1500);
+                showToast('Correct! 🎉 Keep going!', 'success');
+                
+                if (progress === 100) {
+                    setTimeout(() => {
+                        if (currentLevel === "easy") {
+                            setLevel("medium");
+                        } else if (currentLevel === "medium") {
+                            setLevel("hard");
+                        } else {
+                            setLevel("easy");
+                        }
+                    }, 1500);
+                } else {
+                    setTimeout(getNewWord, 1500);
+                }
             } else {
+                wrongSound.play();
+                buzzerSound.play();
                 input.className = 'input-field incorrect';
                 showToast(`Incorrect! The word was: ${currentWord}`, 'error');
                 setTimeout(() => {
@@ -243,38 +310,23 @@
         }
 
         // Add keyboard event listeners
-        document.addEventListener('keypress', function(e) {
-            if (!currentLevel) {
-                // Level selection with number keys
-                if (e.key === '1') setLevel('easy');
-                if (e.key === '2') setLevel('medium');
-                if (e.key === '3') setLevel('hard');
-            } else {
-                // Game controls
-                if (e.key === ' ') {
-                    e.preventDefault(); // Prevent scrolling
-                    speakWord();
-                }
-                if (e.key === 'Enter') {
-                    checkSpelling();
-                }
-            }
-        });
-
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && currentLevel) {
+            if (e.key === 'Enter' && currentLevel) {
+                checkSpelling();
+            } else if (e.key === ' ' && currentLevel) {
+                e.preventDefault();
+                speakWord();
+            } else if (e.key === 'Escape' && currentLevel) {
                 currentLevel = null;
                 score = 0;
                 progress = 0;
+                usedWords.clear();
                 document.getElementById('score').textContent = score;
                 document.getElementById('progress').style.width = '0%';
             }
         });
 
         // Initialize the game
-        getNewWord();
-
-        // Add enter key support
         document.getElementById('userInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 checkSpelling();
