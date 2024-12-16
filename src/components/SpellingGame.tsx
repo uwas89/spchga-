@@ -18,6 +18,9 @@ const SpellingGame = () => {
   const [pressedKey, setPressedKey] = useState("");
   const { toast } = useToast();
 
+  const correctSound = new Audio("/correct.mp3");
+  const wrongSound = new Audio("/wrong.mp3");
+
   const getRandomWord = () => {
     if (!level) return;
     const words = wordsByLevel[level];
@@ -43,6 +46,10 @@ const SpellingGame = () => {
     setUserInput((prev) => prev + key);
   };
 
+  const handleBackspace = () => {
+    setUserInput((prev) => prev.slice(0, -1));
+  };
+
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.key === 'Enter' && level) {
@@ -52,11 +59,13 @@ const SpellingGame = () => {
         speakWord();
       } else if (e.key === 'Escape' && level) {
         setLevel(null);
+      } else if (e.key === 'Backspace' && level) {
+        handleBackspace();
       }
     };
 
-    window.addEventListener('keypress', handleKeyPress);
-    return () => window.removeEventListener('keypress', handleKeyPress);
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
   }, [level, userInput]);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -65,6 +74,7 @@ const SpellingGame = () => {
     setIsCorrect(correct);
 
     if (correct) {
+      correctSound.play();
       setScore(score + 1);
       setProgress((prev) => Math.min(prev + 10, 100));
       toast({
@@ -74,6 +84,7 @@ const SpellingGame = () => {
       });
       setTimeout(getRandomWord, 1500);
     } else {
+      wrongSound.play();
       toast({
         title: "Not quite right 😅",
         description: `The correct spelling is: ${currentWord}`,
@@ -149,6 +160,7 @@ const SpellingGame = () => {
           <KeyboardDisplay 
             pressedKey={pressedKey} 
             onKeyPress={handleKeyPress}
+            onBackspace={handleBackspace}
           />
         </div>
       </div>
