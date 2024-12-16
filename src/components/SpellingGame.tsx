@@ -1,35 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
-import { Volume2, Star, Trophy, Brain, Keyboard } from "lucide-react";
-
-const wordsByLevel = {
-  easy: [
-    "apple",
-    "banana",
-    "cat",
-    "dog",
-    "egg",
-  ],
-  medium: [
-    "chocolate",
-    "dinosaur",
-    "elephant",
-    "flamingo",
-    "giraffe",
-  ],
-  hard: [
-    "hamburger",
-    "igloo",
-    "jellyfish",
-    "knowledge",
-    "language",
-  ],
-};
-
-type Level = "easy" | "medium" | "hard";
+import { Volume2 } from "lucide-react";
+import KeyboardDisplay from "./keyboard/KeyboardDisplay";
+import LevelSelection from "./game/LevelSelection";
+import { Level, wordsByLevel } from "./game/types";
 
 const SpellingGame = () => {
   const [currentWord, setCurrentWord] = useState("");
@@ -38,6 +15,7 @@ const SpellingGame = () => {
   const [progress, setProgress] = useState(0);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [level, setLevel] = useState<Level | null>(null);
+  const [pressedKey, setPressedKey] = useState("");
   const { toast } = useToast();
 
   const getRandomWord = () => {
@@ -60,14 +38,20 @@ const SpellingGame = () => {
     window.speechSynthesis.speak(utterance);
   };
 
-  // Add keyboard event listener
+  const handleKeyPress = (key: string) => {
+    setPressedKey(key);
+    setUserInput((prev) => prev + key);
+  };
+
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.key === 'Enter' && level) {
         handleSubmit(e as unknown as React.FormEvent);
       } else if (e.key === ' ' && level) {
-        e.preventDefault(); // Prevent space from scrolling
+        e.preventDefault();
         speakWord();
+      } else if (e.key === 'Escape' && level) {
+        setLevel(null);
       }
     };
 
@@ -99,65 +83,8 @@ const SpellingGame = () => {
     }
   };
 
-  const handleLevelSelect = (selectedLevel: Level) => {
-    setLevel(selectedLevel);
-    setScore(0);
-    setProgress(0);
-  };
-
   if (!level) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-primary/20 to-background p-8">
-        <div className="max-w-md mx-auto space-y-8">
-          <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold text-primary">Spelling Game</h1>
-            <p className="text-xl text-gray-600">Choose your difficulty level</p>
-          </div>
-
-          <div className="text-center text-sm text-gray-500 mb-4">
-            <p className="flex items-center justify-center gap-2">
-              <Keyboard className="h-4 w-4" />
-              Use number keys (1-3) to select level
-            </p>
-          </div>
-
-          <div className="grid gap-4">
-            <Button
-              onClick={() => handleLevelSelect("easy")}
-              className="h-32 bg-green-500 hover:bg-green-600 transition-all transform hover:scale-105"
-            >
-              <div className="flex flex-col items-center gap-2">
-                <Star className="h-8 w-8" />
-                <span className="text-xl font-bold">Easy (1)</span>
-                <span className="text-sm opacity-90">Simple, common words</span>
-              </div>
-            </Button>
-
-            <Button
-              onClick={() => handleLevelSelect("medium")}
-              className="h-32 bg-yellow-500 hover:bg-yellow-600 transition-all transform hover:scale-105"
-            >
-              <div className="flex flex-col items-center gap-2">
-                <Trophy className="h-8 w-8" />
-                <span className="text-xl font-bold">Medium (2)</span>
-                <span className="text-sm opacity-90">More challenging words</span>
-              </div>
-            </Button>
-
-            <Button
-              onClick={() => handleLevelSelect("hard")}
-              className="h-32 bg-red-500 hover:bg-red-600 transition-all transform hover:scale-105"
-            >
-              <div className="flex flex-col items-center gap-2">
-                <Brain className="h-8 w-8" />
-                <span className="text-xl font-bold">Hard (3)</span>
-                <span className="text-sm opacity-90">Complex vocabulary</span>
-              </div>
-            </Button>
-          </div>
-        </div>
-      </div>
-    );
+    return <LevelSelection onLevelSelect={setLevel} />;
   }
 
   return (
@@ -218,6 +145,11 @@ const SpellingGame = () => {
               Check Spelling (Enter)
             </Button>
           </form>
+
+          <KeyboardDisplay 
+            pressedKey={pressedKey} 
+            onKeyPress={handleKeyPress}
+          />
         </div>
       </div>
     </div>
