@@ -29,7 +29,7 @@ const LevelSelection = ({ onLevelSelect }: LevelSelectionProps) => {
 
         <div className="text-center text-sm text-gray-500 mb-8">
           <h3 className="flex items-center justify-center gap-6 text-3xl font-medium">
-            <Keyboard className="h-12 w-12" />
+            <Keyboard className="h-16 w-16" />
             Ready to start your spelling adventure?
           </h3>
         </div>
@@ -40,7 +40,7 @@ const LevelSelection = ({ onLevelSelect }: LevelSelectionProps) => {
             className="h-48 bg-green-500 hover:bg-green-600 transition-all transform hover:scale-105"
           >
             <div className="flex flex-col items-center gap-6">
-              <Star className="h-20 w-20" />
+              <Star className="h-24 w-24" />
               <span className="text-3xl font-bold">Easy</span>
               <span className="text-xl opacity-90">Simple, common words</span>
             </div>
@@ -51,7 +51,7 @@ const LevelSelection = ({ onLevelSelect }: LevelSelectionProps) => {
             className="h-48 bg-yellow-500 hover:bg-yellow-600 transition-all transform hover:scale-105"
           >
             <div className="flex flex-col items-center gap-6">
-              <Trophy className="h-20 w-20" />
+              <Trophy className="h-24 w-24" />
               <span className="text-3xl font-bold">Medium</span>
               <span className="text-xl opacity-90">More challenging words</span>
             </div>
@@ -62,7 +62,7 @@ const LevelSelection = ({ onLevelSelect }: LevelSelectionProps) => {
             className="h-48 bg-red-500 hover:bg-red-600 transition-all transform hover:scale-105"
           >
             <div className="flex flex-col items-center gap-6">
-              <Brain className="h-20 w-20" />
+              <Brain className="h-24 w-24" />
               <span className="text-3xl font-bold">Hard</span>
               <span className="text-xl opacity-90">Complex vocabulary</span>
             </div>
