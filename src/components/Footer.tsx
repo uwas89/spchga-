@@ -6,12 +6,12 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4">
-            <Link 
-              to="/" 
+            <a 
+              href="https://spell-check-game.online" 
               className="text-xl font-semibold text-primary hover:text-primary/80 transition-colors"
             >
               Spell Check Game
-            </Link>
+            </a>
             <p className="text-gray-600">
               Improve your spelling skills with our interactive learning platform
             </p>
