@@ -20,7 +20,7 @@ const LevelSelection = ({ onLevelSelect }: LevelSelectionProps) => {
           <h1 className="text-6xl font-bold text-primary">Spell Check Game</h1>
           <div className="prose prose-sm max-w-none text-gray-600 px-6">
             <p className="text-2xl leading-relaxed">
-              Welcome to the most exciting spell check game! This is a fun and interactive way to improve your spelling skills. 
+              Welcome to the most exciting spell check game, a free online spelling word game ! This is a fun and interactive way to improve your spelling skills. 
               Whether you're just starting to learn or want to become a spelling champion, this game will help you learn new words 
               and become better at spelling. You can listen to words, type them correctly, and track your progress as you play!
             </p>
