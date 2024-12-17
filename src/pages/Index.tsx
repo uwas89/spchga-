@@ -41,48 +41,48 @@ const Index = () => {
               Let's look at how to play our spell check game with these helpful screenshots:
             </p>
 
-            <div className="grid grid-cols-2 gap-4 my-8">
-              <div className="space-y-2">
+            <div className="space-y-12 my-8">
+              <div className="space-y-4">
                 <img 
                   src="/lovable-uploads/c1b4c3d3-dfd4-4830-8c8c-20a577cb660f.png" 
                   alt="Spell Check Game Level Selection" 
                   className="rounded-lg shadow-lg w-full"
                 />
-                <p className="text-sm text-gray-600 italic">
-                  Image 1: Choose your level - Easy (green), Medium (yellow), or Hard (red). Each level has different word difficulties!
+                <p className="text-xl text-gray-600 italic text-center">
+                  Choose your level - Easy (green), Medium (yellow), or Hard (red). Each level has different word difficulties!
                 </p>
               </div>
               
-              <div className="space-y-2">
+              <div className="space-y-4">
                 <img 
                   src="/lovable-uploads/f655d047-da23-4b0a-b7e2-843e2be3de2d.png" 
                   alt="Spell Check Game Main Interface" 
                   className="rounded-lg shadow-lg w-full"
                 />
-                <p className="text-sm text-gray-600 italic">
-                  Image 2: The main game screen where you can hear the word, type your answer, and use the helpful keyboard!
+                <p className="text-xl text-gray-600 italic text-center">
+                  The main game screen where you can hear the word, type your answer, and use the helpful keyboard!
                 </p>
               </div>
               
-              <div className="space-y-2">
+              <div className="space-y-4">
                 <img 
                   src="/lovable-uploads/1b312009-607b-413f-9e51-2ab3cb9915a1.png" 
                   alt="Spell Check Game Correct Answer" 
                   className="rounded-lg shadow-lg w-full"
                 />
-                <p className="text-sm text-gray-600 italic">
-                  Image 3: When you spell correctly, you'll see a happy green message and your score goes up! Keep going! 🎉
+                <p className="text-xl text-gray-600 italic text-center">
+                  When you spell correctly, you'll see a happy green message and your score goes up! Keep going! 🎉
                 </p>
               </div>
               
-              <div className="space-y-2">
+              <div className="space-y-4">
                 <img 
                   src="/lovable-uploads/96f4252d-f53a-4a9f-94e4-f9e294c81da9.png" 
                   alt="Spell Check Game Incorrect Answer" 
                   className="rounded-lg shadow-lg w-full"
                 />
-                <p className="text-sm text-gray-600 italic">
-                  Image 4: Don't worry if you make a mistake! The game shows you the correct spelling so you can learn and try again! 📚
+                <p className="text-xl text-gray-600 italic text-center">
+                  Don't worry if you make a mistake! The game shows you the correct spelling so you can learn and try again! 📚
                 </p>
               </div>
             </div>
