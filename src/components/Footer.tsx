@@ -27,13 +27,52 @@ const Footer = () => {
                   Home
                 </Link>
               </li>
+              <li>
+                <Link 
+                  to="/about" 
+                  className="text-gray-600 hover:text-primary transition-colors"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/contact" 
+                  className="text-gray-600 hover:text-primary transition-colors"
+                >
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-800">Contact</h3>
-            <p className="text-gray-600">
-              Questions? Reach out to us at support@spellcheckgame.online
-            </p>
+            <h3 className="text-lg font-semibold text-gray-800">Legal</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link 
+                  to="/privacy-policy" 
+                  className="text-gray-600 hover:text-primary transition-colors"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/terms" 
+                  className="text-gray-600 hover:text-primary transition-colors"
+                >
+                  Terms of Conditions
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/dmca" 
+                  className="text-gray-600 hover:text-primary transition-colors"
+                >
+                  DMCA
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-200">
