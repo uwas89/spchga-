@@ -3,8 +3,57 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useEffect } from "react";
 
 const Index = () => {
+  useEffect(() => {
+    // Add JSON-LD Schema
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.innerHTML = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Spell Check Game",
+      "description": "Interactive spelling practice game with multiple difficulty levels, audio pronunciation, and instant feedback. Perfect for students, ESL learners, and anyone looking to improve their spelling skills.",
+      "url": "https://spell-check-game.online",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "keywords": "spell check game, spelling practice, spelling bee, educational game, vocabulary builder, English learning, ESL tool, spelling quiz, interactive spelling",
+      "educationalUse": ["Practice", "Assessment"],
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student"
+      },
+      "featureList": [
+        "Multiple difficulty levels",
+        "Audio pronunciation",
+        "Instant feedback",
+        "Progress tracking",
+        "Interactive keyboard",
+        "Beginner-friendly interface",
+        "Advanced word challenges",
+        "Educational scoring system"
+      ],
+      "creator": {
+        "@type": "Organization",
+        "name": "Spell Check Game"
+      },
+      "inLanguage": "en",
+      "interactionCount": "UserPlays",
+      "educationalLevel": ["Beginner", "Intermediate", "Advanced"]
+    });
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
   return (
     <>
       <Header />
