@@ -12,14 +12,20 @@ const LevelSelection = ({ onLevelSelect }: LevelSelectionProps) => {
     <div className="min-h-screen bg-gradient-to-b from-primary/20 to-background p-8">
       <div className="max-w-md mx-auto space-y-8">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-primary">Spelling Game</h1>
-          <p className="text-xl text-gray-600">Choose your difficulty level</p>
+          <h1 className="text-4xl font-bold text-primary">Spell Check Game</h1>
+          <div className="prose prose-sm max-w-none text-gray-600">
+            <p className="text-lg">
+              Welcome to the most exciting spell check game! This is a fun and interactive way to improve your spelling skills. 
+              Whether you're just starting to learn or want to become a spelling champion, this game will help you learn new words 
+              and become better at spelling. You can listen to words, type them correctly, and track your progress as you play!
+            </p>
+          </div>
         </div>
 
         <div className="text-center text-sm text-gray-500 mb-4">
           <p className="flex items-center justify-center gap-2">
             <Keyboard className="h-4 w-4" />
-            Select your difficulty level
+            Ready to start your spelling adventure?
           </p>
         </div>
 
