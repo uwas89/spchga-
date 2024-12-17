@@ -1,13 +1,17 @@
 import SpellingGame from "@/components/SpellingGame";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Card, CardContent } from "@/components/ui/card";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-primary/10 to-background">
-      <SpellingGame />
-      
-      <ScrollArea className="h-full w-full px-4 py-8">
+    <>
+      <Header />
+      <div className="min-h-screen bg-gradient-to-b from-primary/10 to-background">
+        <SpellingGame />
+        
+        <ScrollArea className="h-full w-full px-4 py-8">
         <Card className="max-w-4xl mx-auto my-8">
           <CardContent className="p-6 prose prose-purple max-w-none">
             <h1 className="text-4xl font-bold text-center text-primary mb-8">Ultimate Spell Check Game Guide</h1>
@@ -174,8 +178,10 @@ const Index = () => {
             </p>
           </CardContent>
         </Card>
-      </ScrollArea>
-    </div>
+        </ScrollArea>
+      </div>
+      <Footer />
+    </>
   );
 };
 
