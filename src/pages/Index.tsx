@@ -10,20 +10,20 @@ const Index = () => {
       <ScrollArea className="h-full w-full px-4 py-8">
         <Card className="max-w-4xl mx-auto my-8">
           <CardContent className="p-6 prose prose-purple max-w-none">
-            <h1 className="text-4xl font-bold text-center text-primary mb-8">Ultimate Spelling Check Game Guide</h1>
+            <h1 className="text-4xl font-bold text-center text-primary mb-8">Ultimate Spell Check Game Guide</h1>
 
-            <h2 className="text-3xl font-semibold text-primary mt-8">1. Welcome to Your Spelling Check Game Adventure!</h2>
+            <h2 className="text-3xl font-semibold text-primary mt-8">1. Welcome to Your Spell Check Game Adventure!</h2>
             <p className="text-lg">
               Hello young spelling explorer! Welcome to the most exciting spelling game that will help you become a spelling champion. 
               This game is like having a friendly teacher who helps you learn new words in a fun way. Whether you're just starting 
               to learn spelling or you're already good at it, this game has something special for everyone!
             </p>
 
-            <h2 className="text-3xl font-semibold text-primary mt-8">2. Spelling Check Game: Choose Your Level</h2>
+            <h2 className="text-3xl font-semibold text-primary mt-8">2. Spell Check Game: Choose Your Level</h2>
             <p className="text-lg">
-              Just like in video games where you start at level 1 and move up, our spelling game has three amazing levels:
+              Just like in video games where you start at level 1 and move up, our spell check game has three amazing levels:
             </p>
-            <h3 className="text-2xl font-medium text-secondary mt-4">Easy Level Spelling Check</h3>
+            <h3 className="text-2xl font-medium text-secondary mt-4">Easy Level Spell Check Game</h3>
             <p className="text-lg">
               This is where everyone starts! You'll find friendly, everyday words that you might already know. Words like "cat," 
               "dog," "sun," and "book" are waiting for you. It's perfect for building your confidence and getting used to how 
@@ -36,7 +36,30 @@ const Index = () => {
               <li>Simple five-letter words: happy, smile</li>
             </ul>
 
-            <h3 className="text-2xl font-medium text-secondary mt-6">Medium Level Spelling Check</h3>
+            <div className="grid grid-cols-2 gap-4 my-8">
+              <img 
+                src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7" 
+                alt="Easy Level Spell Check Game Screenshot" 
+                className="rounded-lg shadow-lg"
+              />
+              <img 
+                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" 
+                alt="Medium Level Spell Check Game Screenshot" 
+                className="rounded-lg shadow-lg"
+              />
+              <img 
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" 
+                alt="Hard Level Spell Check Game Screenshot" 
+                className="rounded-lg shadow-lg"
+              />
+              <img 
+                src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952" 
+                alt="Spell Check Game Success Screenshot" 
+                className="rounded-lg shadow-lg"
+              />
+            </div>
+
+            <h3 className="text-2xl font-medium text-secondary mt-6">Medium Level Spell Check Game</h3>
             <p className="text-lg">
               Ready for bigger words? The medium level is like climbing to the next floor of a fun building! Here you'll find longer 
               words that might make you think a bit harder. Words like "elephant," "rainbow," and "butterfly" are some examples.
@@ -48,15 +71,15 @@ const Index = () => {
               <li>Common sight words: because, through</li>
             </ul>
 
-            <h3 className="text-2xl font-medium text-secondary mt-6">Hard Level Spelling Check</h3>
+            <h3 className="text-2xl font-medium text-secondary mt-6">Hard Level Spell Check Game</h3>
             <p className="text-lg">
               This is where spelling champions shine! The hard level has the kind of words that might appear in spelling bees. 
               Words like "necessary," "beautiful," and "knowledge" will test your spelling skills to the max!
             </p>
 
-            <h2 className="text-3xl font-semibold text-primary mt-8">3. How to Play the Spelling Check Game</h2>
+            <h2 className="text-3xl font-semibold text-primary mt-8">3. How to Play the Spell Check Game</h2>
             <p className="text-lg">
-              Playing our spelling game is as easy as 1-2-3! Here's what you need to do:
+              Playing our spell check game is as easy as 1-2-3! Here's what you need to do:
             </p>
             <ol className="list-decimal pl-6 text-lg space-y-2">
               <li>Pick your level (Easy, Medium, or Hard)</li>
@@ -78,7 +101,7 @@ const Index = () => {
               <li>Encouraging messages to keep you motivated</li>
             </ul>
 
-            <h2 className="text-3xl font-semibold text-primary mt-8">4. Spelling Check Game Progress System</h2>
+            <h2 className="text-3xl font-semibold text-primary mt-8">4. Spell Check Game Progress System</h2>
             <p className="text-lg">
               Every time you spell a word correctly, something exciting happens:
             </p>
@@ -90,13 +113,13 @@ const Index = () => {
               <li>Special celebration sounds play</li>
             </ul>
 
-            <h3 className="text-2xl font-medium text-secondary mt-6">Learning Through Practice</h3>
+            <h3 className="text-2xl font-medium text-secondary mt-6">Spell Check Game Learning Through Practice</h3>
             <p className="text-lg">
               The more you play, the better you get! Our game remembers which words you've seen before and gives you new ones 
               to learn. This way, you're always learning something new while practicing what you already know.
             </p>
 
-            <h2 className="text-3xl font-semibold text-primary mt-8">5. Tips for Spelling Check Game Success</h2>
+            <h2 className="text-3xl font-semibold text-primary mt-8">5. Tips for Spell Check Game Success</h2>
             <p className="text-lg">
               Want to become a spelling champion? Here are some super helpful tips:
             </p>
@@ -109,9 +132,9 @@ const Index = () => {
               <li>Don't worry about making mistakes - they help you learn!</li>
             </ul>
 
-            <h2 className="text-3xl font-semibold text-primary mt-8">6. Making Spelling Practice Fun</h2>
+            <h2 className="text-3xl font-semibold text-primary mt-8">6. Making Spell Check Game Practice Fun</h2>
             <p className="text-lg">
-              Spelling doesn't have to be boring! Our game makes it fun by:
+              Spell check doesn't have to be boring! Our game makes it fun by:
             </p>
             <ul className="list-disc pl-6 text-lg">
               <li>Using bright, friendly colors</li>
@@ -121,9 +144,9 @@ const Index = () => {
               <li>Celebrating your successes</li>
             </ul>
 
-            <h2 className="text-3xl font-semibold text-primary mt-8">7. Benefits of Playing the Spelling Check Game</h2>
+            <h2 className="text-3xl font-semibold text-primary mt-8">7. Benefits of Playing the Spell Check Game</h2>
             <p className="text-lg">
-              Playing our spelling game helps you in many ways:
+              Playing our spell check game helps you in many ways:
             </p>
             <ul className="list-disc pl-6 text-lg">
               <li>Improves your spelling skills</li>
@@ -133,7 +156,7 @@ const Index = () => {
               <li>Prepares you for school work</li>
             </ul>
 
-            <h2 className="text-3xl font-semibold text-primary mt-8">8. Keyboard Shortcuts in Spelling Check Game</h2>
+            <h2 className="text-3xl font-semibold text-primary mt-8">8. Spell Check Game Keyboard Shortcuts</h2>
             <p className="text-lg">
               Make playing even more fun with these special keyboard tricks:
             </p>
@@ -143,15 +166,15 @@ const Index = () => {
               <li>Escape key: Go back to level selection</li>
             </ul>
 
-            <h2 className="text-3xl font-semibold text-primary mt-8">9. Practice Makes Perfect</h2>
+            <h2 className="text-3xl font-semibold text-primary mt-8">9. Practice Makes Perfect in Spell Check Game</h2>
             <p className="text-lg">
               Remember, becoming good at spelling is like learning to ride a bike - it takes practice! The more you play, 
               the better you'll get. Don't give up if you make mistakes. Every champion started as a beginner!
             </p>
 
-            <h2 className="text-3xl font-semibold text-primary mt-8">10. Join the Spelling Adventure</h2>
+            <h2 className="text-3xl font-semibold text-primary mt-8">10. Join the Spell Check Game Adventure</h2>
             <p className="text-lg mb-8">
-              Are you ready to start your spelling adventure? Pick a level, put on your thinking cap, and let's begin! 
+              Are you ready to start your spell check game adventure? Pick a level, put on your thinking cap, and let's begin! 
               Remember, every great speller started with simple words and worked their way up. You can do it too!
             </p>
           </CardContent>
