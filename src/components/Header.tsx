@@ -11,12 +11,12 @@ const Header = () => {
           Spell Check Game
         </a>
         <nav className="space-x-4">
-          <Link 
-            to="/" 
+          <a 
+            href="https://spell-check-game.online" 
             className="text-gray-600 hover:text-primary transition-colors"
           >
             Home
-          </Link>
+          </a>
         </nav>
       </div>
     </header>
