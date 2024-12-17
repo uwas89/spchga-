@@ -12,6 +12,11 @@ const LevelSelection = ({ onLevelSelect }: LevelSelectionProps) => {
     <div className="min-h-screen bg-gradient-to-b from-primary/20 to-background p-8">
       <div className="max-w-md mx-auto space-y-8">
         <div className="text-center space-y-4">
+          <img 
+            src="/lovable-uploads/db9c92ba-e244-4500-8803-48f96e54afe1.png"
+            alt="Spell Check Game Logo"
+            className="w-24 h-24 mx-auto mb-4"
+          />
           <h1 className="text-4xl font-bold text-primary">Spell Check Game</h1>
           <div className="prose prose-sm max-w-none text-gray-600">
             <p className="text-lg">
@@ -23,10 +28,10 @@ const LevelSelection = ({ onLevelSelect }: LevelSelectionProps) => {
         </div>
 
         <div className="text-center text-sm text-gray-500 mb-4">
-          <p className="flex items-center justify-center gap-2">
+          <h3 className="flex items-center justify-center gap-2 text-lg font-medium">
             <Keyboard className="h-4 w-4" />
             Ready to start your spelling adventure?
-          </p>
+          </h3>
         </div>
 
         <div className="grid gap-4">
