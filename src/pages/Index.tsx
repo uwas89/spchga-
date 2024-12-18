@@ -63,7 +63,7 @@ const Index = () => {
         <ScrollArea className="h-full w-full px-4 py-8">
         <Card className="max-w-4xl mx-auto my-8">
           <CardContent className="p-6 prose prose-purple max-w-none">
-            <h1 className="text-4xl font-bold text-center text-primary mb-8">Ultimate Spell Check Game Guide - Try & Test Your Word Vocabulary </h1>
+            <h2 className="text-4xl font-bold text-center text-primary mb-8">Ultimate Spell Check Game Guide - Try & Test Your Word Vocabulary </h2>
 
             <h2 className="text-3xl font-semibold text-primary mt-8">1. Welcome to Your Spell Check Game Adventure! Try & Test Your Word Bank Vocabulary</h2>
             <p className="text-lg">
