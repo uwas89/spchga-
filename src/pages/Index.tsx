@@ -13,8 +13,8 @@ const Index = () => {
     script.innerHTML = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Spell Check Game",
-      "description": "Interactive spelling practice game with multiple difficulty levels, audio pronunciation, and instant feedback. Perfect for students, ESL learners, and anyone looking to improve their spelling skills.",
+      "name": "Spell Check Game - Spellcheck game try and test your vocabulary with this word game",
+      "description": "Spellcheck game try and test your vocabulary with this word game. Interactive spelling practice game with multiple difficulty levels, audio pronunciation, and instant feedback. Perfect for students, ESL learners, and anyone looking to improve their spelling skills.",
       "url": "https://spell-check-game.online",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "Any",
@@ -23,7 +23,7 @@ const Index = () => {
         "price": "0",
         "priceCurrency": "USD"
       },
-      "keywords": "spell check game, spelling practice, spelling bee, educational game, vocabulary builder, English learning, ESL tool, spelling quiz, interactive spelling",
+      "keywords": "spell check game, spellcheck game, voabulary check game, spelling practice, spelling bee, educational game, vocabulary builder, English learning, ESL tool, spelling quiz, interactive spelling",
       "educationalUse": ["Practice", "Assessment"],
       "audience": {
         "@type": "EducationalAudience",
@@ -63,11 +63,11 @@ const Index = () => {
         <ScrollArea className="h-full w-full px-4 py-8">
         <Card className="max-w-4xl mx-auto my-8">
           <CardContent className="p-6 prose prose-purple max-w-none">
-            <h1 className="text-4xl font-bold text-center text-primary mb-8">Ultimate Spell Check Game Guide</h1>
+            <h1 className="text-4xl font-bold text-center text-primary mb-8">Ultimate Spell Check Game Guide - Try & Test Your Word Vocabulary </h1>
 
-            <h2 className="text-3xl font-semibold text-primary mt-8">1. Welcome to Your Spell Check Game Adventure!</h2>
+            <h2 className="text-3xl font-semibold text-primary mt-8">1. Welcome to Your Spell Check Game Adventure! Try & Test Your Word Bank Vocabulary</h2>
             <p className="text-lg">
-              Hello young spelling explorer! Welcome to the most exciting spelling game that will help you become a spelling champion. 
+              Hello young spelling explorer! Welcome to the most exciting spellcheck game try and test your words of vocabulary, this spell check game will help you become a spelling champion. 
               This game is like having a friendly teacher who helps you learn new words in a fun way. Whether you're just starting 
               to learn spelling or you're already good at it, this game has something special for everyone!
             </p>
