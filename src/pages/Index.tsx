@@ -140,7 +140,7 @@ const Index = () => {
               </div>
             </div>
 
-            <h3 className="text-2xl font-medium text-secondary mt-6">Playing Step by Step</h3>
+            <h3 className="text-2xl font-medium text-secondary mt-6">Lets play spell chek game step by step</h3>
             <ol className="list-decimal pl-6 text-lg space-y-2">
               <li>Start by picking your level (as shown in Image 1)</li>
               <li>Click the speaker button or press Space to hear the word (see Image 2)</li>
