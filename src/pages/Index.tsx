@@ -72,7 +72,7 @@ const Index = () => {
               <p className="text-lg">
                 Hello young spelling explorer! Welcome to the ultimate <strong>spell check game</strong> adventure.
                 Our interactive spell check game is designed to test and improve your vocabulary while making learning fun.
-                Whether you’re a beginner or aiming to become a spelling champion, this game offers something special for everyone.
+                Whether you’re a beginner or aiming to become a spelling champion, this game offers something special for everyone. Join our reddit community https://www.reddit.com/r/spellcheckgame
               </p>
 
               <h2 className="text-3xl font-semibold text-primary mt-8">
