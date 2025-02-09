@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+
+# Sitemap for faster indexing
+Sitemap: https://spell-check-game.online/sitemap.xml
+
+# Allow important assets (CSS, JS, Images) for better rendering & indexing
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+
+# Disallow unnecessary or duplicate content
+Disallow: /admin/
+Disallow: /private/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+
+
+# Prevent indexing of login, user profiles, and non-valuable pages
+Disallow: /wp-login.php
+Disallow: /wp-admin/
+Disallow: /?s=
+Disallow: /trackback/
+Disallow: /feed/
+Disallow: /*?replytocom
+
+# No crawl-delay for instant indexing (Google ignores this, but good for other bots)
