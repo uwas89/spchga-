@@ -13,7 +13,7 @@ const Index = () => {
     script.innerHTML = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Spell Check Game - Free Online Interactive Spelling Challenge",
+      "name": "Spell Check Game - A Free Online Spellcheck Word Spelling Game",
       "description": "Spell Check Game is an interactive spelling challenge designed to test and improve your vocabulary. Enjoy multiple difficulty levels, audio pronunciation, and instant feedback. Perfect for students, ESL learners, and anyone looking to enhance their spelling skills.",
       "url": "https://spell-check-game.online",
       "applicationCategory": "EducationalApplication",
@@ -23,7 +23,7 @@ const Index = () => {
         "price": "0",
         "priceCurrency": "USD"
       },
-      "keywords": "spell check game, interactive spell check game, online spell check game, spelling practice, vocabulary builder, spelling challenge, ESL spelling game, educational game",
+      "keywords": "spell check game, spellcheck game, spell check word game, interactive spell check game, online spell check game, spelling practice, vocabulary builder, spelling challenge, ESL spelling game, educational game",
       "educationalUse": ["Practice", "Assessment"],
       "audience": {
         "@type": "EducationalAudience",
