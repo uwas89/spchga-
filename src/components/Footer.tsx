@@ -72,6 +72,15 @@ const Footer = () => {
                   DMCA
                 </Link>
               </li>
+               <li>
+                <Link 
+                  to="https://converttowebptojpg.com/" 
+                  className="text-gray-600 hover:text-primary transition-colors"
+                >
+                  Webp to Jpg
+                </Link>
+              </li>
+              
             </ul>
           </div>
         </div>
