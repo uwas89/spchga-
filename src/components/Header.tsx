@@ -17,6 +17,13 @@ const Header = () => {
           >
             Home
           </a>
+          <a 
+            href="https://aitohumantextconverterfree.net" 
+            className="text-gray-600 hover:text-primary transition-colors"
+          >
+            Ai to human text converter free
+          </a>
+          
         </nav>
       </div>
     </header>
